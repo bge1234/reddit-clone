@@ -1,0 +1,3 @@
+- Fix animation delay on sorting: https://stackoverflow.com/questions/27507875/example-of-nganimate-for-smoothly-sorting-an-ng-repeat
+- Make sure sorting works always.
+- Get moment.js working again.

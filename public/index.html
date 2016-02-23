@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="ben">
+  <head>
+    <meta charset="utf-8">
+    <title>Reddit Clone</title>
+    <script src="https://code.angularjs.org/1.5.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-animate.min.js"></script>
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body ng-controller="MyController">
+    <header>
+      <div class="headercontent">
+        <span class="title horiz-space">Reddit Clone</span>
+        <a class="horiz-space" href="" ng-click="togglePostForm()">Submit Post</a>
+        <input class="horiz-space" type="text" ng-model="searchterm" placeholder="Search">
+        <label> Sort by:
+          <select class="horiz-space" ng-model="sorter" ng-init="rating">
+            <option value="rating">Rating ascending</option>
+            <option value="-rating">Rating descending</option>
+            <option value="timestamp">Date ascending</option>
+            <option value="-timestamp">Date descending</option>
+            <option value="title">Title ascending</option>
+            <option value="-title">Title descending</option>
+          </select>
+        <label>
+        <a href="" ng-click="sampleData()">Populate sample data</a>
+        <div ng-show="showPostForm">
+          <form class="post-form" ng-submit="addPost()">
+            <input type="text" ng-model="title" placeholder="Title" required>
+            <input type="text" ng-model="author" placeholder="Author" required>
+            <input type="text" ng-model="image" placeholder="Image URL" required>
+            <input type="text" ng-model="description" placeholder="Description" required>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="post-repeater" ng-repeat="post in posts | filter:searchterm | orderBy:sorter">
+        <img class="post-image" src="{{post.image}}">
+        <div class="post-right">
+          <p class="post-title">{{post.title}}
+            &nbsp;&nbsp;|&nbsp;
+            <a href="" ng-click="voteUp(post)"><img src="uparrow.png" height="15" width="15"></a>
+            <a href="" ng-click="voteDown(post)"><img src="downarrow.png" height="15" width="15"></a>
+            <span class="positive-rating" ng-show="post.rating > 0">{{post.rating}}</span>
+            <span ng-show="post.rating === 0">{{post.rating}}</span>
+            <span class="negative-rating" ng-show="post.rating < 0">{{post.rating}}</span>
+          </p>
+          <p class="post-author">By {{post.author}}</p>
+          <p class="post-description">{{post.description}}</p>
+          <p class="post-footer">
+            {{post.timestamp}}
+            &nbsp;&nbsp;|&nbsp;
+            <a ng-show="post.comments.length !== 1" href="" ng-click="toggleComments(post)">{{post.comments.length}} comments</a>
+            <a ng-show="post.comments.length === 1" href="" ng-click="toggleComments(post)">{{post.comments.length}} comment</a>
+            &nbsp;&nbsp;|&nbsp;
+            <a href="" ng-click="toggleCommentForm(post)">Add comment</a>
+          </p>
+          <div class="comment-area" ng-show="post.showComments">
+            <div ng-repeat="comment in post.comments" ng-show="post.showComments">
+              <strong>{{comment.author}}</strong> - {{comment.comment}}
+            </div>
+          </div>
+          <div ng-show="post.showCommentForm">
+            <form class="comment-form" name="addCommentForm" ng-submit="addComment(post, this.addCommentForm)">
+              <input type="text" ng-model="post.commentAuthor" placeholder="Author" required>
+              <input type="text" ng-model="post.commentText" placeholder="Comment" required>
+              <input type="submit" value="Add comment">
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

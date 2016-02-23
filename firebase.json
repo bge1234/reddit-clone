@@ -1,0 +1,9 @@
+{
+  "firebase": "reddit-clone-benebel",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

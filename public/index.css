@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  color: gray;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+main {
+  margin-bottom: 50px;
+}
+
+header {
+  width: 100vw;
+  height: 50px;
+  background: lightgray;
+  padding-top: 20px;
+}
+
+.horiz-space {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.post-form {
+  background: lightgray;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-bottom: 20px;"
+}
+
+.title {
+  font-size: 22px;
+}
+
+.post-repeater {
+  width: 90vw;
+  min-height: 200px;
+  margin: 0 auto;
+  border: gray 1px solid;
+  background: lightgray;
+  margin-top: 50px;
+}
+
+.post-repeater.ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+}
+
+.post-repeater.ng-enter-active {
+  opacity: 1;
+}
+
+.post-repeater.ng-leave {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+}
+
+.post-repeater.ng-leave-active {
+  opacity: 1;
+}
+
+.post-image {
+  height: 150px;
+  width: 150px;
+  float: left;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 25px;
+}
+
+.post-title {
+  margin-top: 10px;
+}
+
+.positive-rating {
+  color: green;
+}
+
+.negative-rating {
+  color: red;
+}
+
+.post-author {
+  float: right;
+  margin-right: 10px;
+}
+
+.post-description {
+  margin-top: 50px;
+}
+
+.post-footer {
+  margin-top: 10px;
+}
+
+.comment-area, .comment-form {
+  width: 82.5%;
+  background: lightgray;
+  border-left: gray 1px solid;
+  margin-top: 10px;
+  margin-left: -1px;
+  padding-bottom: 10px;
+  padding-left: 200px;
+}
+
+/*.comment-form {
+  width: 100%;
+  background: lightgray;
+  border-left: gray 1px solid;
+  margin-top: -1px;
+  padding-top: 5px;
+  margin-left: 200px;
+  padding-bottom: 10px;
+}*/
